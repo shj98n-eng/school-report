@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>تقرير اعمال شهر الربيع الاخر</title>
+    
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a1931;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* ========================================= */
+        /* القسم الأول: الصور الأربعة */
+        /* ========================================= */
+        .gallery-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px 0 15px 0; 
+            width: 100%;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 10px; 
+            width: 50%;       
+            max-width: 320px;  
+        }
+
+        .image-grid img {
+            width: 100%;
+            aspect-ratio: 2 / 3; 
+            object-fit: cover; 
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            animation: float 4s ease-in-out infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .image-grid img:hover {
+            transform: scale(1.05) translateY(-5px) !important;
+            border-color: #4facfe;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            animation-play-state: paused; 
+        }
+
+        .image-grid img:nth-child(1) { animation-delay: 0s; }
+        .image-grid img:nth-child(2) { animation-delay: 0.3s; }
+        .image-grid img:nth-child(3) { animation-delay: 0.6s; }
+        .image-grid img:nth-child(4) { animation-delay: 0.9s; }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* ========================================= */
+        /* القسم الثاني: الشواهد */
+        /* ========================================= */
+        .docs-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 70px; 
+            padding: 10px 20px 150px 20px;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .normal-doc {
+            width: 100%;
+            max-width: 650px; 
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .doc-with-video {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+        }
+
+        .doc-with-video > img {
+            width: 100%;
+            display: block;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* ========================================= */
+        /* الحاوية الأساسية للفيديوهات (الافتراضية) */
+        /* ========================================= */
+        .videos-wrapper {
+            position: absolute;
+            top: 52%; 
+            left: 0;
+            right: 0;
+            margin: 0 auto; 
+            width: 75%;  
+            height: 38%; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px; 
+        }
+
+        .videos-wrapper video {
+            flex: 1 1 0; 
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain; 
+            background-color: transparent; 
+            border-radius: 10px;
+        }
+
+        /* ========================================= */
+        /* تخصيص فيديو صفحة 5 */
+        /* ========================================= */
+        .videos-wrapper.page-5 {
+            right: 0;
+            left: 0;
+            margin: 0 auto;
+            width: 33%;        
+            height: 45%;       
+            top: 46%;          
+        }
+
+        .videos-wrapper.page-5 video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        /* ========================================= */
+        /* تخصيص فيديو صفحة 8 */
+        /* ========================================= */
+        .videos-wrapper.page-8 {
+            right: 14%;        
+            left: auto;        
+            margin: 0;         
+            width: 25%;        
+            height: 36%;       
+            top: 45%;          
+        }
+
+        /* ========================================= */
+        /* تخصيص فيديوهات صفحة 9 */
+        /* ========================================= */
+        .videos-wrapper.page-9 {
+            right: 0;
+            left: 0;
+            margin: 0 auto;
+            width: 58%;        
+            height: 44%;       
+            top: 47%;          
+            gap: 15px;
+        }
+
+        .videos-wrapper.page-9 video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        /* ========================================= */
+        /* تخصيص فيديو صفحة 11 */
+        /* ========================================= */
+        .videos-wrapper.page-11 {
+            right: 15%;        
+            left: auto;
+            margin: 0;
+            width: 45%;        
+            height: 30%;       
+            top: 48%;          
+        }
+
+        /* ========================================= */
+        /* تخصيص فيديو صفحة 13 */
+        /* ========================================= */
+        .videos-wrapper.page-13 {
+            right: 0;
+            left: 0;
+            margin: 0 auto;
+            width: 32%;        
+            height: 42%;       
+            top: 48%;          
+        }
+
+        .videos-wrapper.page-13 video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        /* ========================================= */
+        /* تخصيص فيديو صفحة 15 */
+        /* ========================================= */
+        .videos-wrapper.page-15 {
+            right: 0;
+            left: 0;
+            margin: 0 auto;
+            width: 33%;        
+            height: 45%;       
+            top: 46%;          
+        }
+
+        .videos-wrapper.page-15 video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        /* ========================================= */
+        /* تخصيص فيديوهات صفحة 17 */
+        /* ========================================= */
+        .videos-wrapper.page-17 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr)); 
+            grid-template-rows: repeat(2, minmax(0, 1fr));    
+            gap: 6px;          
+            width: 42%;        
+            height: 44%;       
+            top: 46%;          
+            right: 0;
+            left: 0;
+            margin: 0 auto;
+        }
+
+        .videos-wrapper.page-17 video {
+            width: 100%;
+            height: 100%;
+            min-width: 0; 
+            min-height: 0; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        /* ========================================= */
+        /* تخصيص فيديوهات صفحة 19 */
+        /* ========================================= */
+        .videos-wrapper.page-19 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr)); 
+            gap: 8px;          
+            width: 65%;        
+            height: 42%;       
+            top: 52%;          
+            right: 0;
+            left: 0;
+            margin: 0 auto;
+        }
+
+        .videos-wrapper.page-19 video {
+            width: 100%;
+            height: 100%;
+            min-width: 0; 
+            min-height: 0; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        /* ========================================= */
+        /* تخصيص فيديو صفحة 21 */
+        /* ========================================= */
+        .videos-wrapper.page-21 {
+            right: 12%;        
+            left: auto;        
+            margin: 0;
+            width: 35%;        
+            height: 45%;       
+            top: 38%;          
+        }
+
+        /* ========================================= */
+        /* تخصيص فيديو صفحة 22 */
+        /* ========================================= */
+        .videos-wrapper.page-22 {
+            right: 0;
+            left: 0;
+            margin: 0 auto;
+            width: 33%;        
+            height: 45%;       
+            top: 46%;          
+        }
+
+        .videos-wrapper.page-22 video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .image-grid {
+                width: 70%;
+                max-width: 250px;
+                gap: 8px;
+            }
+            .docs-section {
+                gap: 50px; 
+            }
+            .videos-wrapper {
+                gap: 5px; 
+                top: 51%;
+                height: 36%;
+            }
+            .videos-wrapper.page-5 {
+                width: 42%;
+                height: 38%;
+                top: 48%;
+            }
+            .videos-wrapper.page-8 {
+                width: 28%;
+                height: 34%;
+                top: 50%;
+                right: 12%;
+            }
+            .videos-wrapper.page-9 {
+                width: 70%;
+                height: 38%;
+                top: 47%;
+            }
+            .videos-wrapper.page-11 {
+                width: 48%;
+                height: 33%;
+                top: 48%;
+                right: 12%; 
+            }
+            .videos-wrapper.page-13 {
+                width: 42%;
+                height: 38%;
+                top: 48%;
+            }
+            .videos-wrapper.page-15 {
+                width: 42%;
+                height: 38%;
+                top: 48%;
+            }
+            .videos-wrapper.page-17 {
+                width: 50%;       
+                height: 42%;      
+                top: 46%;         
+            }
+            .videos-wrapper.page-19 {
+                width: 75%;       
+                height: 38%;      
+                top: 50%;         
+            }
+            .videos-wrapper.page-21 {
+                width: 42%;
+                height: 38%;
+                top: 47%;
+                right: 30%; 
+            }
+            .videos-wrapper.page-22 {
+                width: 42%;
+                height: 38%;
+                top: 48%;
+                left: 22%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="gallery-section">
+        <div id="gallery-container" class="image-grid"></div>
+    </section>
+
+    <section class="docs-section" id="docs-container"></section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            const galleryContainer = document.getElementById('gallery-container');
+            for (let i = 1; i <= 4; i++) {
+                const img = document.createElement('img');
+                img.src = `photo${i}.jpg`;
+                img.alt = `صورة ${i}`;
+                galleryContainer.appendChild(img);
+            }
+
+            const pageVideos = {
+                1: ['video1.mp4'],
+                3: ['video3.mp4'], 
+                5: ['video55.mp4'],
+                7: ['video7.mov'], 
+                8: ['video8.mp4'],
+                9: ['video9.mp4', 'video99.mp4'],
+                11: ['video11.mov'], 
+                13: ['video13.mp4'],
+                15: ['video15.mp4'],
+                17: ['video17.mp4', 'video177.mp4', 'video1777.mp4', 'video17777.mp4'],
+                19: ['video19.mp4', 'video199.mp4', 'video1999.mp4'],
+                21: ['video21.mov'], 
+                22: ['video22.mp4']
+            };
+
+            const docsContainer = document.getElementById('docs-container');
+            let allVideos = []; 
+            
+            for (let i = 1; i <= 23; i++) {
+                
+                if (pageVideos[i] && pageVideos[i].length > 0) {
+                    
+                    const docContainer = document.createElement('div');
+                    docContainer.className = 'doc-with-video';
+
+                    const img = document.createElement('img');
+                    img.src = `${i}.png`;
+                    img.onerror = function() {
+                        if (this.src.includes('.png')) this.src = `${i}.jpg`;
+                    };
+
+                    const wrapper = document.createElement('div');
+                    wrapper.className = `videos-wrapper page-${i}`;
+
+                    const isSingleVideoPage = pageVideos[i].length === 1;
+
+                    pageVideos[i].forEach(videoName => {
+                        const videoElement = document.createElement('video');
+                        
+                        // تعيين مصدر الفيديو مسبقاً لتفادي التأخير والبطء في الجوالات الأخرى
+                        videoElement.src = videoName;
+                        videoElement.preload = "auto"; 
+                        
+                        videoElement.controls = false; 
+                        videoElement.loop = true; 
+                        videoElement.playsInline = true;
+                        
+                        videoElement.muted = true; 
+                        videoElement.dataset.single = isSingleVideoPage ? "true" : "false";
+                        
+                        wrapper.appendChild(videoElement);
+                        allVideos.push(videoElement);
+                    });
+
+                    docContainer.appendChild(img);
+                    docContainer.appendChild(wrapper);
+                    docsContainer.appendChild(docContainer);
+                } 
+                else {
+                    const img = document.createElement('img');
+                    img.className = 'normal-doc';
+                    
+                    img.src = `${i}.png`;
+                    img.alt = `شاهد رقم ${i}`;
+                    
+                    img.onerror = function() {
+                        if (this.src.includes('.png')) {
+                            this.src = `${i}.jpg`;
+                        } else if (this.src.includes('.jpg')) {
+                            this.src = `${i}.jpeg`;
+                        }
+                    };
+                    
+                    docsContainer.appendChild(img);
+                }
+            }
+
+            let userHasInteracted = false;
+            
+            const unlockAudio = () => {
+                userHasInteracted = true;
+                allVideos.forEach(video => {
+                    if (video.dataset.single === "true" && !video.paused) {
+                        video.muted = false;
+                    }
+                });
+            };
+
+            ['touchstart', 'wheel', 'scroll', 'click', 'keydown'].forEach(event => {
+                window.addEventListener(event, unlockAudio, { once: true, passive: true });
+            });
+
+            // تقليل الحساسية لمنع تداخل تشغيل الفيديوهات ببعضها أثناء التمرير السريع
+            const options = { threshold: 0.6 }; 
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const vid = entry.target;
+                    
+                    if (entry.isIntersecting) {
+                        // ضبط الصوت بدقة تامة: منع تداخل الأصوات نهائياً
+                        vid.muted = !(userHasInteracted && vid.dataset.single === "true");
+                        
+                        vid.play().catch(error => {
+                            vid.muted = true;
+                            vid.play();
+                        });
+                    } else {
+                        vid.pause();
+                    }
+                });
+            }, options);
+
+            allVideos.forEach(video => observer.observe(video));
+            
+        });
+    </script>
+</body>
+</html>
